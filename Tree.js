@@ -45,7 +45,6 @@ class Tree {
             sign2 = 1;
         }
         let ranX = (Math.random()* 1.5) * sign1 + (padding * sign1);
-        console.log(ranX);
         let ranY = (Math.random() * 1.5) * sign2 + (padding * sign2);
 
         mat4.translate(this.leaves1Transform, this.leaves1Transform, vec3.fromValues (ranX, ranY+.05, .5));

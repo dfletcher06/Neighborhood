@@ -8,9 +8,8 @@ var orthoProjMat, persProjMat, viewMat, ringCF;
 //var topViewMat;
 var axisBuff, tmpMat;
 var globalAxes;
-var plane, house, garage, door;
+var plane, house, garage, pool, cement, pole;
 var trees = [];
-var paths = [];
 var treesNum = 50;
 
 /* Vertex shader attribute variables */
@@ -66,14 +65,9 @@ function main() {
             plane = new Plane(gl);
             house = new House(gl);
             garage = new Garage(gl);
-
-            for (let k = 1.9; k > -1.9; k = k - .2){
-                paths.push(new Sidewalk(gl, k));
-            }
-            //path = new Sidewalk(gl);
-            door = new Door(gl);
-
-            paths.push(new Sidewalk(gl, 1));
+            pool = new Pool(gl);
+            pole = new TelephonePole(gl);
+            cement = new Cement(gl);
 
             for (i = 0; i < treesNum; i++) {
                 trees.push(new Tree(gl));
@@ -150,17 +144,13 @@ function drawScene() {
     plane.draw(posAttr, colAttr, modelUnif, tmpMat);
     house.draw(posAttr, colAttr, modelUnif, tmpMat);
     garage.draw(posAttr, colAttr, modelUnif, tmpMat);
-    //path.draw(posAttr, colAttr, modelUnif, tmpMat);
-    door.draw(posAttr, colAttr, modelUnif, tmpMat);
+    pool.draw(posAttr, colAttr, modelUnif, tmpMat);
+    cement.draw(posAttr, colAttr, modelUnif, tmpMat);
+    pole.draw(posAttr, colAttr, modelUnif, tmpMat);
 
-    //path.draw(posAttr, colAttr, modelUnif, tmpMat);
-
-    for(let k = 0; k < paths.length; k++){
-        paths[k].draw(posAttr, colAttr, modelUnif, tmpMat);
-    }
 
     for (i = 0; i < trees.length; i++) {
-        trees[i].draw(posAttr, colAttr, modelUnif, tmpMat);
+        //trees[i].draw(posAttr, colAttr, modelUnif, tmpMat);
     }
 }
 
